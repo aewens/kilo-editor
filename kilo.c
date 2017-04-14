@@ -14,6 +14,8 @@ struct termios orig_termios;
 
 // terminal
 void die(const char *s) {
+    editorRefreshScreen();
+    
     perror(s);
     exit(1);
 }
@@ -59,6 +61,7 @@ void editorProcessKeypress() {
     
     switch (c) {
         case CTRL_KEY('q'):
+            editorRefreshScreen();
             exit(0);
             break;
     }
